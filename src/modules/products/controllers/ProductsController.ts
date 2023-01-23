@@ -6,18 +6,13 @@ import ShowProductService from '../services/ShowProductService';
 import UpdateProductService from '../services/UpdateProductService';
 
 export default class ProductsController {
-  /**
-   * async index
-   */
   public async index(req: Request, res: Response): Promise<Response> {
     const listProducts = new ListProductService();
     const products = await listProducts.execute();
 
     return res.json(products);
   }
-  /**
-   * async show
-   */
+
   public async show(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
 
@@ -27,9 +22,6 @@ export default class ProductsController {
     return res.json(product);
   }
 
-  /**
-   * async create
-   */
   public async create(req: Request, res: Response): Promise<Response> {
     const { name, price, quantity } = req.body;
     const createProduct = new CreateProductService();
@@ -42,9 +34,6 @@ export default class ProductsController {
     return res.json(product);
   }
 
-  /**
-   * asunc update
-   */
   public async update(req: Request, res: Response): Promise<Response> {
     const { name, price, quantity } = req.body;
     const { id } = req.params;
@@ -58,7 +47,7 @@ export default class ProductsController {
     return res.json(product);
   }
 
-  public async name(req: Request, res: Response): Promise<Response> {
+  public async delete(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const DeleteProduct = new DeleteProductService();
 
